@@ -66,6 +66,24 @@ export default function AdminCategory() {
     }
   };
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.delete(`/category/${selected._id}`);
+      if (data?.error) {
+        toast.error(data.error);
+      } else {
+        toast.success(`"${data.name}" kategorisi silindi.`);
+        setSelected(null);
+        loadCategories();
+        setVisible(false);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Kategori silinemedi.");
+    }
+  };
+
   return (
     <>
       <Jumbotron
@@ -116,6 +134,8 @@ export default function AdminCategory() {
                 value={updatingName}
                 setValue={setUpdatingName}
                 handleSubmit={handleUpdate}
+                buttonText="Güncelle"
+                handleDelete={handleDelete}
               />
             </Modal>
           </div>

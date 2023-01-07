@@ -13,6 +13,8 @@ import AdminProduct from "./pages/admin/Product";
 import UserOrders from "./pages/user/Order";
 import UserProfile from "./pages/user/Profile";
 import AdminRoute from "./components/routes/AdminRoute";
+import AdminProducts from "./pages/admin/Products";
+import AdminProductUpdate from "./pages/admin/ProductUpdate";
 
 const PageNotFound = () => {
   return (
@@ -40,6 +42,11 @@ export default function App() {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/category" element={<AdminCategory />} />
           <Route path="admin/product" element={<AdminProduct />} />
+          <Route path="admin/products" element={<AdminProducts />} />
+          <Route
+            path="admin/product/update/:slug"
+            element={<AdminProductUpdate />}
+          />
         </Route>
         <Route path="*" element={<PageNotFound />} replace />
       </Routes>

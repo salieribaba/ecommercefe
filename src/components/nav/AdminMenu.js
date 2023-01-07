@@ -14,7 +14,13 @@ export default function AdminMenu() {
 
         <li>
           <NavLink className="list-group-item" to="/dashboard/admin/product">
-            Ürünler
+            Ürün Ekle
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink className="list-group-item" to="/dashboard/admin/products">
+            Ürün Listesi
           </NavLink>
         </li>
       </ul>
