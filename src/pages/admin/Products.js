@@ -55,8 +55,10 @@ export default function AdminProducts() {
 
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="card-title">{p.name}</h5>
-                        <p className="card-text">{p.description}</p>
+                        <h5 className="card-title">{p?.name}</h5>
+                        <p className="card-text">
+                          {p?.description?.substring(0, 250)}...
+                        </p>
                         <p className="card-text">
                           <small className="text-muted">
                             {moment(p.createdAt).format(
