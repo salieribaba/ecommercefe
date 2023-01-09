@@ -108,7 +108,7 @@ export default function UserCartSidebar() {
         <button
           className="btn btn-outline-success"
           disabled={!auth?.user?.address || !cart?.length || !auth?.token}
-          onClick={() => navigate("/checkout")}
+          onClick={() => navigate("/dashboard/user/orders")}
         >
           Sipariş Oluştur
         </button>
