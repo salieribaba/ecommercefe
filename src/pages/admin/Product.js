@@ -123,7 +123,7 @@ export default function AdminProduct() {
               bordered={false}
               size="large"
               className="form-select mb-3"
-              placeholder="Choose category"
+              placeholder="Kategori seçiniz"
               onChange={(value) => setCategory(value)}
             >
               {categories?.map((c) => (
