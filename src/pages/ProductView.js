@@ -4,6 +4,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Badge } from "antd";
 import ProductCard from "../components/cards/ProductCard";
+import { useCart } from "../context/cart";
+import { toast } from "react-hot-toast";
 import {
   FaProjectDiagram,
   FaRegClock,
@@ -16,6 +18,7 @@ import {
 } from "react-icons/fa";
 
 export default function ProductView() {
+  const [cart, setCart] = useCart();
   const [product, setProduct] = useState({});
   const [related, setRelated] = useState([]);
   const params = useParams();
@@ -106,6 +109,10 @@ export default function ProductView() {
             <button
               className="btn btn-outline-primary col card-button"
               style={{ borderBottomRightRadius: "5px" }}
+              onClick={() => {
+                setCart([...cart, product]);
+                toast.success(`${product.name} sepete eklendi.`);
+              }}
             >
               Sepete Ekle
             </button>
