@@ -23,6 +23,12 @@ export default function AdminMenu() {
             Ürün Listesi
           </NavLink>
         </li>
+
+        <li>
+          <NavLink className="list-group-item" to="/dashboard/admin/orders">
+            Sipariş Yönetimi
+          </NavLink>
+        </li>
       </ul>
     </>
   );

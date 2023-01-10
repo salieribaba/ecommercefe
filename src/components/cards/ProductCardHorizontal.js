@@ -50,14 +50,16 @@ export default function ProductCardHorizontal({ p, remove = true }) {
             </h4>
           </div>
         </div>
-        <div className="d-flex justify-content-end">
-          <button
-            className="btn btn-sm btn-outline-danger mb-2"
-            onClick={() => removeFromCart(p)}
-          >
-            Sepetten Çıkar
-          </button>
-        </div>
+        {remove && (
+          <div className="d-flex justify-content-end">
+            <button
+              className="btn btn-sm btn-outline-danger mb-2"
+              onClick={() => removeFromCart(p)}
+            >
+              Sepetten Çıkar
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

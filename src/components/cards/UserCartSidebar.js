@@ -10,26 +10,8 @@ export default function UserCartSidebar() {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
   // state
-  const [clientToken, setClientToken] = useState("");
-  const [instance, setInstance] = useState("");
-  const [loading, setLoading] = useState(false);
   // hooks
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (auth?.token) {
-      getClientToken();
-    }
-  }, [auth?.token]);
-
-  const getClientToken = async () => {
-    try {
-      const { data } = await axios.get("/braintree/token");
-      setClientToken(data.clientToken);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const cartTotal = () => {
     let total = 0;
@@ -40,6 +22,31 @@ export default function UserCartSidebar() {
       style: "currency",
       currency: "TRY",
     });
+  };
+
+  const handleBuy = async (e) => {
+    //cart içeriğini order tablosuna kaydet, cart içeriğini temizle
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/order`,
+        {
+          cart,
+          total: parseFloat(cartTotal().replace("₺", "")),
+        },
+        {
+          headers: {
+            authtoken: auth.token,
+          },
+        }
+      );
+      localStorage.removeItem("cart");
+      setCart([]);
+      toast.success("Siparişiniz alındı. Teşekkürler!");
+      navigate("/dashboard/user/orders");
+    } catch (err) {
+      toast.error("Siparişiniz alınamadı. Lütfen tekrar deneyiniz.");
+    }
   };
 
   return (
@@ -108,7 +115,7 @@ export default function UserCartSidebar() {
         <button
           className="btn btn-outline-success"
           disabled={!auth?.user?.address || !cart?.length || !auth?.token}
-          onClick={() => navigate("/dashboard/user/orders")}
+          onClick={handleBuy}
         >
           Sipariş Oluştur
         </button>

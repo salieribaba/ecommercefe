@@ -22,6 +22,7 @@ import CategoriesList from "./pages/CategoriesList";
 import CategoryView from "./pages/CategoryView";
 import Cart from "./pages/Cart";
 import Contact from "./pages/user/Contact";
+import AdminOrders from "./pages/admin/Orders";
 
 const PageNotFound = () => {
   return (
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="admin/category" element={<AdminCategory />} />
           <Route path="admin/product" element={<AdminProduct />} />
           <Route path="admin/products" element={<AdminProducts />} />
+          <Route path="admin/orders" element={<AdminOrders />} />
           <Route
             path="admin/product/update/:slug"
             element={<AdminProductUpdate />}
