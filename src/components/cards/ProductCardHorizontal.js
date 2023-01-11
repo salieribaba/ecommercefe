@@ -1,9 +1,11 @@
-import moment from "moment";
+import React, { useState } from "react";
 import { useCart } from "../../context/cart";
 
 export default function ProductCardHorizontal({ p, remove = true }) {
   // context
   const [cart, setCart] = useCart();
+
+  const [orderQuantity, setOrderQuantity] = useState(1);
 
   const removeFromCart = (p) => {
     let answer = window.confirm(`${p.name} Sepetten çıkarılsın mı?`);
@@ -48,6 +50,7 @@ export default function ProductCardHorizontal({ p, remove = true }) {
                 currency: "TRY",
               })}
             </h4>
+            {/* <h4>Sipariş Miktarı : {orderQuantity} </h4> */}
           </div>
         </div>
         {remove && (

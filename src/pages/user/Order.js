@@ -50,6 +50,7 @@ export default function UserOrders() {
                     <thead>
                       <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Sipariş No</th>
                         <th scope="col">Durumu</th>
                         <th scope="col">Müşteri</th>
                         <th scope="col">Sipariş Tarihi</th>
@@ -60,6 +61,7 @@ export default function UserOrders() {
                     <tbody>
                       <tr>
                         <td>{i + 1}</td>
+                        <td>{o?._id}</td>
                         <td>{o?.status}</td>
                         <td>{o?.buyer.name}</td>
                         <td>{moment(o?.createdAt).fromNow()}</td>

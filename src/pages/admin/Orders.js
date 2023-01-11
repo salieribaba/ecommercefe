@@ -69,6 +69,7 @@ export default function AdminOrders() {
                     <thead>
                       <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Sipariş No</th>
                         <th scope="col">Durumu</th>
                         <th scope="col">Müşteri</th>
                         <th scope="col">Sipariş Tarihi</th>
@@ -79,6 +80,7 @@ export default function AdminOrders() {
                     <tbody>
                       <tr>
                         <td>{i + 1}</td>
+                        <td>{o?._id}</td>
                         <td>
                           <Select
                             bordered={false}
